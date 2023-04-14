@@ -17,9 +17,8 @@ describe('pedido', () => {
             const user = data.customer
 
             cy.createUser(customer)
-
-            loginPage.submit(customer.email, customer.password)
-            shaversPage.header.userShouldBeLoggedIn(customer.name)
+            cy.uiLogin(customer)
+            
         })
 
         it('deve pode soliciatar serviços', () => {

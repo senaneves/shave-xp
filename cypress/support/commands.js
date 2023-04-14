@@ -74,3 +74,15 @@ Cypress.Commands.add('uiLogin', (user) => {
     loginPage.submit(user.email, user.password)
     shaversPage.header.userShouldBeLoggedIn(user.name)
 })
+
+Cypress.Commands.add('apiLogin', (user) =>{
+
+    cy.request({
+        method: 'POST',
+        url: 'http://localhost:3333/sessions',
+        body: {email: user.email, password: user.password}
+    }).then(response =>{
+        expect(response.status).to.eql(200)
+    })
+
+})
