@@ -1,7 +1,10 @@
+import shared from "../../shared"
+
 class LoginPage {
 
     constructor() {
         this.alertError = '.alert-error'
+        this.shared = shared
     }
     submit(email = null, password = null) {
 
@@ -25,19 +28,24 @@ class LoginPage {
             .click()
     }
 
-    noticeShouldBe(message) {
+    // noticeSuccessShouldBe(message) {
+    //     cy.get('.notice-container')
+    //         .should('be.visible')
+    //         .find('.error p')
+    //         .should('have.text', message)
+    // }
 
+    // noticeShouldBe(expectdText) {
+    //     cy.get('.notice p', { timeout: 10000 })
+    //         .should('be.visible')
+    //         .should('have.text', expectdText)
+    // }
 
-        cy.get('.notice-container')
-            .should('be.visible')
-            .find('.error p')
-            .should('have.text', message)
-    }
-    alertMessageShouldBe(message) {
-        cy.get(this.alertError)
-            .should('be.visible')
-            .should('have.text', message)
-    }
+    // alertMessageShouldBe(message) {
+    //     cy.get(this.alertError)
+    //         .should('be.visible')
+    //         .should('have.text', message)
+    // }
 
     requiredFields(emailMessage, senhaMessage) {
         cy.get(this.alertError)
@@ -46,7 +54,6 @@ class LoginPage {
                 expect($small.get(0).textContent).to.equal(emailMessage)
                 expect($small.get(1).textContent).to.equal(senhaMessage)
             })
-
     }
 }
 

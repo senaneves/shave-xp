@@ -1,10 +1,10 @@
 /// <reference types="cypress" />
 
-import loginPage from "../support/pages/login/index"
-import shaversPage from "../support/pages/shavers"
+import loginPage from "../support/pages/views/login"
+import shaversPage from "../support/pages/views/shavers"
 import data from '../fixtures/order.json'
-import catalogPage from '../support/pages/catalog'
-import OrderPage from '../support/pages/order'
+import catalogPage from '../support/pages/views/catalog'
+import OrderPage from '../support/pages/views/order'
 
 describe('pedido', () => {
 
@@ -17,7 +17,8 @@ describe('pedido', () => {
             const user = data.customer
 
             cy.createUser(customer)
-            cy.uiLogin(customer)
+            //cy.uiLogin(customer)
+            cy.apiLogin(customer)
             
         })
 
@@ -25,8 +26,10 @@ describe('pedido', () => {
 
             shaversPage.selectSharver(shaver.name)
             catalogPage.hasShaver(shaver.name)
+
             catalogPage.selectService(service.description)
             catalogPage.hasTitle(service.description)
+            
             catalogPage.confirmOrder()
             OrderPage.hasOrder()
             

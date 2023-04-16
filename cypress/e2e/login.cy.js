@@ -1,15 +1,14 @@
 /// <reference types="cypress" />
 
-import loginPage from "../support/pages/login/index"
-import shaversPage from "../support/pages/shavers"
-import header from "../support/components/header"
-
+import loginPage from "../support/pages/views/login"
+import shaversPage from "../support/pages/views/shavers"
+import header from "../support/pages/components/header"
 import data from '../fixtures/users-login'
 
 describe('Login', () => {
 
     context('Quando submeto o formulario', () => {
-        it.only('deve logar com sucesso', () => {
+        it('deve logar com sucesso', () => {
 
             const user = data.success
             cy.createUser(user)
@@ -22,7 +21,7 @@ describe('Login', () => {
                 const message = 'Ocorreu um erro ao fazer login, verifique suas credenciais.'
 
                 loginPage.submit(user.email, user.password)
-                loginPage.noticeShouldBe(message)
+                loginPage.shared.noticeShouldBe(message)
 
 
             })
@@ -32,7 +31,7 @@ describe('Login', () => {
                 const message = 'Ocorreu um erro ao fazer login, verifique suas credenciais.'
 
                 loginPage.submit(user.email, user.password)
-                loginPage.noticeShouldBe(message)
+                loginPage.shared.noticeShouldBe(message)
 
             })
 
@@ -63,7 +62,7 @@ describe('Login', () => {
                 const message = 'Pelo menos 6 caracteres'
                 it(`não deve logar com a senha: ${p}`, () => {
                     loginPage.submit('papito@teste.com.br', p)
-                    loginPage.alertMessageShouldBe(message)
+                    loginPage.shared.alertMessageShouldBe(message)
                 })
             })
         })
@@ -75,7 +74,7 @@ describe('Login', () => {
                 const message = 'Informe um email válido'
                 it(`não deve logar com o email: ${e}`, () => {
                     loginPage.submit(e, 123456)
-                    loginPage.alertMessageShouldBe(message)
+                    loginPage.shared.alertMessageShouldBe(message)
                 })
             })
         })
