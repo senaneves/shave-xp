@@ -1,5 +1,5 @@
-const { query } = require('express')
-const { func } = require('joi')
+require('dotenv').config({encoding: 'latin1'})
+
 const { Pool } = require('pg')
 
 const dbConfig = {
@@ -8,6 +8,11 @@ const dbConfig = {
     password: 'x8UFjuiqLZfhjEzuCjPzLXwmKVNENk66',
     database: 'ifaqfmhj',
     port: 5432
+    // host: process.env.DB_HOST,
+    // user: process.env.DB_USER,
+    // password: process.env.DB_PASS,
+    // database: process.env.DB_NAME,
+    // port: process.env.DB_PORT
 }
 
 const pool = new Pool(dbConfig)

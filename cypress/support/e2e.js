@@ -14,6 +14,13 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
+import './commands/login'
+import './commands/notice-alert'
+import './commands/order'
+import './commands/register-user'
+import './commands/api'
+
+
 import './commands'
 
 // Alternatively you can use CommonJS syntax:
