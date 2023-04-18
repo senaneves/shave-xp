@@ -8,7 +8,7 @@ describe('Cadastrar usuário', () => {
     context('Quando realizar o cadastro de usuario', () => {
 
         const user = data.user3
-        it.only('deve realizar cadastro de usuário com sucesso', () => {
+        it('deve realizar cadastro de usuário com sucesso', () => {
             const message = 'Boas vindas, faça login para solicitar serviços!'
             cy.deleteUser(user)
             cy.signUp(user.name, user.email, user.password)

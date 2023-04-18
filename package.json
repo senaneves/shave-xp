@@ -4,7 +4,7 @@
   "description": "Projeto de teste ponta a ponta para shave experience",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node runner.js",
     "apiHelper": "nodemon api/app.js"
   },
   "keywords": [
@@ -17,6 +17,7 @@
   "devDependencies": {
     "bcrypt": "^5.1.0",
     "cypress": "^12.9.0",
+    "cypress-tesults-reporter": "^1.4.1",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-joi-validation": "^5.0.1",
